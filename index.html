@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Comment Box</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css?v=1a"/>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <section id="main">
+            <h1>Comment Box</h1>
+            <p>If you have a comment, please let us know here.</p>
+            <hr />
+            <fieldset>
+                <form id="comment-form">
+                    <label>Enter your name:</label>
+                    <input type="text" required />
+                    <label for="email">Enter your email: <label>
+                    <input type="email" name="email" required />
+                    <label>Enter your comment: </label>
+                    <textarea rows="5" cols="50" id="comment" placeholder="Your comment here" required></textarea>
+                    <input type="submit" value="Submit"/>
+                    <p id="comment-length"></p>
+                </form>
+            </fieldset>
+        </section>
+        <script src="script.js"></script>
+    </body>
+</html>

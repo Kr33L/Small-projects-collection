@@ -1,0 +1,51 @@
+body {
+    width: 100%;
+    margin: 0;
+    font-family: Verdana;
+    font-size: 16px;
+}
+
+#main {
+    border: groove;
+    box-sizing: border-box;
+    max-width: 960px;
+    margin: auto;
+    text-align: center;
+    background-color: #E6C79C;
+}
+
+h1, p {
+    margin: 1em auto;
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    min-width: 300px;
+    width: 60vw;
+    max-width: 500px;
+    text-align: center;
+}
+
+fieldset {
+    border: none;
+    padding-top: 1rem;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 10px 0px 10px 0;
+    min-height: 2em;
+}
+
+input:focus {
+    outline: 1px solid green;
+    box-shadow: 0 0 4px 1px green;
+}
+input[type="submit"] {
+    display: block;
+    background-color: #CDDFA0;
+    font-size: 1rem;
+    width: 50%;
+    margin: 0 auto;
+}
