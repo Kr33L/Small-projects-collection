@@ -11,48 +11,56 @@
 
   <body>
     <main class="grid-container">
-      <div class="grid-item grid-item-0">
+      <div class="grid-item header">
         <h1>Fruit Shop</h1>
       </div>
-      <div class="grid-item grid-item-1">
-        <img src="content/apple.png" alt="apple"></img>
-        <h3>Apple</h3>
-        <p class="price">£0.15</p> <!-- LINK PRICE FROM JAVASCRIPT / REPEAT FOR EACH FRUIT-->
-        <button type="button" class="add">Add</button>
+      <div class="grid-item">
+        <img class="img" src="content/apple.png" alt="apple"></img>
+        <h3 class="fruit">Apple</h3>
+        <p class="price">£0.20</p> <!-- LINK PRICE FROM JAVASCRIPT / REPEAT FOR EACH FRUIT-->
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
       </div>
-      <div class="grid-item grid-item-2">
-        <img src="content/orange.png" alt="orange"></img>
-        <h3>Orange</h3>
-        <p class="price">£0.15</p>
-        <button type="button" class="add">Add</button>
-      </div>
-      <div class="grid-item grid-item-3">
-        <img src="content/banana.png" alt="banana"></img>
-        <h3>Banana</h3>
+      <div class="grid-item">
+        <img class="img" src="content/orange.png" alt="orange"></img>
+        <h3 class="fruit">Orange</h3>
         <p class="price">£0.25</p>
-        <button type="button" class="add">Add</button>
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
       </div>
-      <div class="grid-item grid-item-4">
-        <img src="content/strawberries.png" alt="strawberries"></img>
-        <h3>Strawberries</h3>
+      <div class="grid-item">
+        <img class="img" src="content/banana.png" alt="banana"></img>
+        <h3 class="fruit">Banana</h3>
+        <p class="price">£0.30</p>
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
+      </div>
+      <div class="grid-item">
+        <img class="img" src="content/strawberries.png" alt="strawberries"></img>
+        <h3 class="fruit">Strawberries</h3>
+        <p class="price">£1</p>
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
+      </div>
+      <div class="grid-item">
+        <img class="img" src="content/blueberries.png" alt="blueberries"></img>
+        <h3 class="fruit">Blueberries</h3>
         <p class="price">£2</p>
-        <button type="button" class="add">Add</button>
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
       </div>
-      <div class="grid-item grid-item-5">
-        <img src="content/blueberries.png" alt="blueberries"></img>
-        <h3>Blueberries</h3>
-        <p class="price">£3</p>
-        <button type="button" class="add">Add</button>
+      <div class="grid-item">
+        <img class="img" src="content/raspberries.png" alt="raspberries"></img>
+        <h3 class="fruit">Raspberries</h3>
+        <p class="price">£2</p>
+        <button type="button" class="remove">Remove from Cart</button>
+        <button type="button" class="add">Add to Cart</button>
       </div>
-      <div class="grid-item grid-item-6">
-        <img src="content/raspberries.png" alt="raspberries"></img>
-        <h3>Raspberries</h3>
-        <p class="price">£2.50</p>
-        <button type="button" class="add">Add</button>
+      <div class="grid-item shopping-cart">
+        <h2 class="cart-header">Cart</h2>
+        <span class="total"></span>
       </div>
     </main>
-    <aside>
-    </aside>
   </body>
 
 </html>

@@ -10,11 +10,10 @@ body {
   padding: 10px 0;
   grid-gap: 2em;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill);
   border: 2px outset black;
   border-radius: 5%;
-  box-shadow: -10px -10px 20px #AF5B5B, 10px 10px 20px black;
-  background-color: #AF5B5B;
+  box-shadow: -10px -10px 20px #af5b5b, 10px 10px 20px black;
+  background-color: #af5b5b;
   justify-items: center;
 }
 
@@ -29,23 +28,29 @@ body {
   height: 250px;
   font-size: 20px;
   font-weight: 300;
-  background-color: #F6F4F3;
+  background-color: #f6f4f3;
 }
-
-.grid-item h3 {
+.grid-item .fruit {
   margin: auto;
-}
-
-.grid-item img {
+} .grid-item .img {
   max-width: 50%;
 }
-.grid-item-0 {
+.header {
   grid-column: 1 / 4;
   width: 90%;
   height: 85%;
 }
 
-.add {
+.shopping-cart {
+  grid-column: 1 / 4;
+  width: 90%;
+  height: 45%;
+  padding: 1em;
+} .cart-header {
+  margin: 0;
+} 
+
+.add, .remove{
   border: groove black;
   border-radius: 0px 0px 5px 5px;
   background-color: black;
@@ -53,35 +58,7 @@ body {
   width: 100%;
   height: auto;
   transition-duration: 0.4s;
-} .add:hover {
+} .add:hover, .remove:hover {
   background-color: lime;
   color: black;
 }
-
-/* * {
-  padding: 0 auto;
-  margin: 0 auto;
-  text-align: center;
-}
-
-body {
-  background-image: url(content/conebg.png);
-  max-width: 768px;
-  border: 1px ridge black;
-}
-
-
-
-main, header{
-  background-color: white;
-}
-
-main {
-  display: grid;
-  row-gap: 20px;
-  border: 1px ridge black;
-}
-
-section {
-  border: 1px ridge black;
-} */

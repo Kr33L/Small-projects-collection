@@ -1,9 +1,23 @@
-const add = document.querySelectorAll(".add");
-const price = document.querySelectorAll(".price");
+function addToTotal() {
+  let price = document.querySelectorAll(".price");
+  let totalHtml = document.querySelector(".total");
 
-add[0].onclick = () => {
-  //increase value of total by 
+  for (let i = 0; i < price.length; i++) {
+    let sum = 0;
+    total = sum + price[i];
+    totalHtml.innerHtml = "£" + total;
+  }
 }
+
+let addBtn = document.querySelectorAll(".add");
+for (let i = 0; i < addBtn.length; i++) {
+  addBtn[i].addEventListener("click", addToTotal());
+}
+
+/* function Basket() {
+  let sum = 0;
+  for (let i = 0; i )
+}; */
 
 /* const basket = {
   apple: {
