@@ -50,7 +50,7 @@ body {
   margin: 0;
 } 
 
-.add, .remove{
+.btn{
   border: groove black;
   border-radius: 0px 0px 5px 5px;
   background-color: black;
@@ -58,7 +58,7 @@ body {
   width: 100%;
   height: auto;
   transition-duration: 0.4s;
-} .add:hover, .remove:hover {
+} .btn:hover {
   background-color: lime;
   color: black;
 }

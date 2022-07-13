@@ -6,7 +6,6 @@
     <title>A Fruit Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" async></script>
   </head>
 
   <body>
@@ -17,50 +16,50 @@
       <div class="grid-item">
         <img class="img" src="content/apple.png" alt="apple"></img>
         <h3 class="fruit">Apple</h3>
-        <p class="price">£0.20</p> <!-- LINK PRICE FROM JAVASCRIPT / REPEAT FOR EACH FRUIT-->
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-1">£0.20</p> <!-- LINK PRICE FROM JAVASCRIPT / REPEAT FOR EACH FRUIT-->
+        <button type="button" class="btn btn-remove" id="removeBtn-1">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-1">Add to Cart</button>
       </div>
       <div class="grid-item">
         <img class="img" src="content/orange.png" alt="orange"></img>
         <h3 class="fruit">Orange</h3>
-        <p class="price">£0.25</p>
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-2">£0.25</p>
+        <button type="button" class="btn btn-remove" id="removeBtn-2">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-2">Add to Cart</button>
       </div>
       <div class="grid-item">
         <img class="img" src="content/banana.png" alt="banana"></img>
         <h3 class="fruit">Banana</h3>
-        <p class="price">£0.30</p>
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-3">£0.30</p>
+        <button type="button" class="btn btn-remove" id="removeBtn-3">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-3">Add to Cart</button>
       </div>
       <div class="grid-item">
         <img class="img" src="content/strawberries.png" alt="strawberries"></img>
         <h3 class="fruit">Strawberries</h3>
-        <p class="price">£1</p>
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-4">£1</p>
+        <button type="button" class="btn btn-remove" id="removeBtn-4">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-4">Add to Cart</button>
       </div>
       <div class="grid-item">
         <img class="img" src="content/blueberries.png" alt="blueberries"></img>
         <h3 class="fruit">Blueberries</h3>
-        <p class="price">£2</p>
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-5">£2</p>
+        <button type="button" class="btn btn-remove" id="removeBtn-5">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-5">Add to Cart</button>
       </div>
       <div class="grid-item">
         <img class="img" src="content/raspberries.png" alt="raspberries"></img>
         <h3 class="fruit">Raspberries</h3>
-        <p class="price">£2</p>
-        <button type="button" class="remove">Remove from Cart</button>
-        <button type="button" class="add">Add to Cart</button>
+        <p id="price-6">£2</p>
+        <button type="button" class="btn btn-remove" id="removeBtn-6">Remove from Cart</button>
+        <button type="button" class="btn btn-add" id="addBtn-6">Add to Cart</button>
       </div>
       <div class="grid-item shopping-cart">
         <h2 class="cart-header">Cart</h2>
-        <span class="total"></span>
+        <div id="total"></div>
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
-
 </html>

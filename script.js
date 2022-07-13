@@ -1,18 +1,33 @@
-function addToTotal() {
-  let price = document.querySelectorAll(".price");
-  let totalHtml = document.querySelector(".total");
+var total = 0;
 
-  for (let i = 0; i < price.length; i++) {
-    let sum = 0;
-    total = sum + price[i];
-    totalHtml.innerHtml = "£" + total;
-  }
+function addToTotal(event) {
+    const mapPricesId = `price-${event.target.id.slice(-1)}`;
+    const prices = document.getElementById(mapPricesId);
+    const totalInPage = document.getElementById('total');
+    total += parseFloat(prices.innerHTML.slice(1));
+    totalInPage.innerHTML = "Your total is:" + "£" + total.toFixed(2);
 }
 
-let addBtn = document.querySelectorAll(".add");
-for (let i = 0; i < addBtn.length; i++) {
-  addBtn[i].addEventListener("click", addToTotal());
+function removeFromTotal(event) {
+  const mapPricesId = `price-${event.target.id.slice(-1)}`;
+  const prices = document.getElementById(mapPricesId);
+  const totalInPage = document.getElementById('total');
+  total -= parseFloat(prices.innerHTML.slice(1));
+
+  totalInPage.innerHTML = "Your total is:" + "£" + total.toFixed(2);
 }
+
+const removeBtns = document.querySelectorAll(".btn-remove");
+for (let i = 0; i < removeBtns.length; i++) {
+  removeBtns[i].addEventListener("click", removeFromTotal);
+}
+
+const addBtns = document.querySelectorAll(".btn-add");
+for (let i = 0; i < addBtns.length; i++) {
+  addBtns[i].addEventListener("click", addToTotal);
+}
+
+
 
 /* function Basket() {
   let sum = 0;
