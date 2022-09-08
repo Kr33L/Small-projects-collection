@@ -34,7 +34,7 @@ body {
 }
 
 .palette {
-  background: lightblue;
+  background: white;
   width: 95vw;
   height: 95vh;
   border-radius: 0.5em;
@@ -59,9 +59,19 @@ body {
   width: 25%;
 }
 
+.hex {
+  outline: none;
+  border: none;
+  margin-bottom: 0px;
+  border-radius: 5em;
+  color: black;
+  font-weight: 1000;
+  letter-spacing: 5px;
+}
+
 .color {
-  background: lightgray;
-  height: 20em;
+  background: white;
+  height: 80vh;
   width: 100%;
 }
 
