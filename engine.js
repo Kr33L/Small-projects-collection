@@ -1,5 +1,3 @@
-// get elements
-
 const generateBtn = document.querySelector(".new-palette-btn");
 const lockBtn = document.querySelectorAll(".lock-btn");
 const color = document.querySelectorAll(".color");
@@ -9,6 +7,7 @@ generateBtn.addEventListener("click", generateColors);
 
 function generateColors() {
   for (let i = 0; i < lockBtn.length; i++) {
+    //lock button toggle
     lockBtn[i].addEventListener("click", () => {
       lockBtn[i].classList.add("locked");
     });
@@ -17,6 +16,7 @@ function generateColors() {
       lockBtn[i].classList.remove("locked");
     });
 
+    //check if color is locked, generate if not
     if (lockBtn[i].classList.contains("locked")) {
       continue;
     } else {
