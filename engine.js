@@ -5,18 +5,16 @@ const hex = document.querySelectorAll(".hex");
 
 generateBtn.addEventListener("click", generateColors);
 
+//lock button toggle
+for (let i = 0; i < lockBtn.length; i++) {
+  lockBtn[i].addEventListener("click", () => {
+    lockBtn[i].classList.toggle("locked");
+  });
+}
+
 function generateColors() {
+  //check if color is locked, generate if not
   for (let i = 0; i < lockBtn.length; i++) {
-    //lock button toggle
-    lockBtn[i].addEventListener("click", () => {
-      lockBtn[i].classList.add("locked");
-    });
-
-    lockBtn[i].addEventListener("dblclick", () => {
-      lockBtn[i].classList.remove("locked");
-    });
-
-    //check if color is locked, generate if not
     if (lockBtn[i].classList.contains("locked")) {
       continue;
     } else {
