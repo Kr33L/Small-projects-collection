@@ -8,3 +8,6 @@ Randomize a color palette
 # Project-Gallery
 
 Project gallery showcasing my projects.
+# Comment-box
+
+Comment submission form
