@@ -1,13 +1,34 @@
-# Small-projects-collection
-This is a repo containing all of my smaller projects to make space for bigger ones.
-# Tribute-to-Bastion
+## SmallProjects
+This is a repo containing all of my smaller projects to make space for bigger ones.<br>
+All projects are accessible from the main gh-pages link.<br>
+All old projects were left mostly as they were before merging into this repository.
 
-My first ever webpage. A bit messy.
-# Palette-Randomizer
-Randomize a color palette
-# Project-Gallery
+- #### Bastion Tribute
+<details>
+  <summary>expand</summary><br>
+  This is my first "big" website project showcasing a game called "Bastion" by Supergiant Games.
+</details>
 
-Project gallery showcasing my projects.
-# Comment-box
+- #### Comment Form
+<details>
+  <summary>expand</summary><br>
+  Simple comment form with validation, character counter and maximum message length.
+</details>
 
-Comment submission form
+- #### Fruit Shop
+<details>
+  <summary>expand</summary><br>
+  Fruit shop with basic functionality to add or remove from the total.
+</details>
+
+- #### Palette Randomizer
+<details>
+  <summary>expand</summary>
+  Color palette randomizer with a button to generate new colours and buttons to lock specific colours. 
+</details>
+
+- #### Project Gallery
+<details>
+  <summary>expand</summary>
+  A very basic attempt at a showcase page for my projects.
+</details>
