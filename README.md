@@ -3,3 +3,5 @@ This is a repo containing all of my smaller projects to make space for bigger on
 # Tribute-to-Bastion
 
 My first ever webpage. A bit messy.
+# Palette-Randomizer
+Randomize a color palette
