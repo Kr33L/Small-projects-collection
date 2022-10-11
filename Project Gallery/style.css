@@ -1,10 +1,13 @@
-* {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: center;
+.return-link {
+  font-family: 'Consolas', Courier, monospace;
+  background-color: white; 
+  margin-top: 10px;
 }
 
 body {
   background-color: #272727;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 }
 
 .gallery {

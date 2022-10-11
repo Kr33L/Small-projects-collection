@@ -1,4 +1,10 @@
-body {
+.return-link {
+  font-family: 'Consolas', Courier, monospace;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.body {
     width: 100%;
     margin: 0;
     font-family: Verdana;

@@ -1,3 +1,7 @@
+.return-link {
+    background-color: white;
+}
+
 body {
   background-image: url("content/bastionbg.png");
   background-size: cover;

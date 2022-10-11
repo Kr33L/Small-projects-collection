@@ -1,3 +1,8 @@
+.return-link {
+  font-family: 'Consolas', Courier, monospace;
+  background-color: white;
+}
+
 body {
   margin: 0;
   background: white;
