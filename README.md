@@ -3,6 +3,8 @@ This is a repo containing all of my smaller projects to make space for bigger on
 All projects are accessible from the main gh-pages link.<br>
 All old projects were left mostly as they were before merging into this repository.
 
+Click on `expand` to view more information about each project.
+
 - #### Bastion Tribute
 <details>
   <summary>expand</summary><br>
