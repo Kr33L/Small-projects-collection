@@ -5,3 +5,6 @@ This is a repo containing all of my smaller projects to make space for bigger on
 My first ever webpage. A bit messy.
 # Palette-Randomizer
 Randomize a color palette
+# Project-Gallery
+
+Project gallery showcasing my projects.

@@ -1,0 +1,79 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: #272727;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto 30px;
+  margin-top: 140px;
+  max-width: 100%;
+  width: 400px;
+  background-color: #fed766;
+  border: 2px ridge #009fb7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 100px 1px black;
+}
+
+.hide {
+  display: none;
+}
+
+.header {
+  display: inline-block;
+  padding: 10px;
+  background-color: #fed766;
+  border: 2px ridge #009fb7;
+  border-radius: 10px;
+}
+
+img {
+  margin: 0 5px;
+  padding: 0;
+  max-width: 400px;
+  max-height: 220px;
+  height: 220px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border: 5px ridge #009fb7;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 50%;
+  font-size: 1.5rem;
+  background-color: #009fb7;
+  color: white;
+  box-shadow: 0 0 5px 0 black;
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  margin: 20px;
+  background-color: rgb(254, 235, 120, 0.5);
+  border-radius: 10px;
+  border: 2px solid #009fb7;
+  max-width: 380px;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+  }
+}
