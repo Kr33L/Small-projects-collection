@@ -1,6 +1,6 @@
 <nav>
-	<a href="/">home</a>
-	<a href="/projects/legacy/bastion">bastion</a>
+	<a href="/">Home</a>
+	<a href="/projects/legacy/bastion">Bastion</a>
 </nav>
 
 <slot />
