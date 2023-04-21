@@ -116,6 +116,9 @@
 		background-size: cover;
 		background-color: wheat;
 		cursor: url('/images/bastion/cursor-n.png'), auto;
+	}
+
+	main {
 		font-family: 'Consolas', Courier, monospace;
 	}
 
