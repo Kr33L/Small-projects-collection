@@ -4,8 +4,8 @@
 	const image = (name) => `/images/bastion/${name}`;
 </script>
 
-<!-- HTML -->
 <svelte:body use:addPageClass={'page'} />
+
 <main>
 	<section class="content">
 		<header>
@@ -118,6 +118,7 @@
 		cursor: url('/images/bastion/cursor-n.png'), auto;
 		font-family: 'Consolas', Courier, monospace;
 	}
+
 	section {
 		background: rgba(245, 222, 179, 0.9);
 		border-style: groove;
@@ -129,37 +130,45 @@
 		margin: auto;
 		padding: 0px 10px 0px 10px;
 	}
+
 	hr {
 		border: 1px inset wheat;
 	}
+
 	.enemies-list {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
 	}
+
 	.left-text img {
 		text-align: left;
 		float: right;
 		max-width: 85px;
 	}
+
 	#rucks {
 		max-width: 120px;
 	}
+
 	.right-text img {
 		text-align: right;
 		float: left;
 		max-width: 90px;
 	}
+
 	.quote {
 		text-align: center;
 	}
+
 	.center-img {
 		display: flex;
 		text-align: center;
 		margin: auto;
 		max-width: 100%;
 	}
+
 	.date {
 		text-align: center;
 		max-width: 100px;
