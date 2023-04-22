@@ -1,6 +1,7 @@
 <script>
 	import addPageClass from '$lib/utils/addPageClass';
-	import currentDate from '$lib/utils/currentDate';
+
+	const currentDate = () => new Date().toDateString();
 	const image = (name) => `/images/bastion/${name}`;
 </script>
 
@@ -33,13 +34,9 @@
 		<div class="right-text">
 			<img id="rucks" src={image('rucksit.png')} alt="Rucks" />
 			<h4>Rucks, the Stranger</h4>
-			<p class="quote">
-				<i>
-					"Now The Kid sees somethin' stranger still; his mind races. <br />
-					Did anyone else survive? <br />
-					Sure enough, he finds another. He finds me."
-				</i>
-			</p>
+			<p class="quote">"Now The Kid sees somethin' stranger still; his mind races.</p>
+			<p class="quote">Did anyone else survive?</p>
+			<p class="quote">Sure enough, he finds another. He finds me."</p>
 			<p>
 				The Kid meets Rucks for the first time when he arrives at the Bastion. He is a survivor of the calamity. After the Calamity, the original cores powering the Bastion have inexplicably been
 				rendered inert. The Stranger sends The Kid to scavenge for more in ruins of Caelondia.
@@ -163,6 +160,8 @@
 
 	.quote {
 		text-align: center;
+		font-style: italic;
+		margin: 0.1rem;
 	}
 
 	.center-img {
