@@ -1,23 +1,13 @@
 <script>
-	import '../app.css';
+	import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '../app.postcss';
 </script>
 
-<nav class="navbar content-center">
+<nav class="navbar">
 	<a href="/" class="button">Home</a>
 	<a href="/projects" class="button">Projects</a>
 	<a href="/contact" class="button">Contact</a>
 </nav>
 
 <slot />
-
-<style>
-	.navbar {
-		display: flex;
-		justify-content: space-evenly;
-		max-width: 10rem;
-		padding: 0 5rem;
-		margin-bottom: 1rem;
-		background-color: green;
-		border-radius: 50px;
-	}
-</style>
