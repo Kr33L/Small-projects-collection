@@ -1,6 +1,7 @@
 {
-	"singleAttributePerLine": true,
+	"plugins": ["prettier-plugin-tailwindcss"],
 	"useTabs": true,
 	"singleQuote": true,
+	"bracketSameLine": true,
 	"tabWidth": 2
 }
