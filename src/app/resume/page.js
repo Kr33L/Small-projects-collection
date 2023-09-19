@@ -1,10 +1,9 @@
-import { Download, Resume } from '@/components/Resume';
+import { Resume } from '@/components/Resume';
 
 export default function ResumePage() {
 	return (
-		<>
-			<Download />
+		<div className="flex justify-center">
 			<Resume />
-		</>
+		</div>
 	);
 }
