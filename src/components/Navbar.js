@@ -2,23 +2,21 @@ import Link from 'next/link';
 
 export default function Navbar() {
 	return (
-		<div className="flex justify-center sm:py-10">
-			<nav className="container fixed flex h-16 justify-evenly bg-black py-4 text-white transition-all sm:top-2 sm:max-w-sm sm:rounded-xl sm:border-4 sm:border-green-400">
-				<Link
-					href="/"
-					className="rounded-full transition-all hover:bg-zinc-700">
-					Home
-				</Link>
-				<Link
-					href="/projects"
-					className=" rounded-full  transition-all hover:bg-zinc-700 hover:text-lg">
-					Projects
-				</Link>
-				<Link
-					href="/resume"
-					className=" rounded-full transition-all hover:bg-zinc-700 hover:text-lg">
-					Resume
-				</Link>
+		<div className="justify-center pb-20 sm:flex sm:py-10">
+			<nav className="container fixed flex h-10 justify-center border-black py-1 sm:top-4 sm:max-w-xs sm:rounded-md sm:border-2">
+				{[
+					['Home', '/'],
+					['Projects', '/projects'],
+					['Resume', '/resume'],
+					['Blog', '/blog'],
+				].map(([title, url]) => (
+					<Link
+						key={title}
+						href={url}
+						className="rounded-xl px-2 pt-1 transition-all hover:px-2 hover:pt-3 ">
+						{title}
+					</Link>
+				))}
 			</nav>
 		</div>
 	);
