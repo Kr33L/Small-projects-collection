@@ -1,41 +1,20 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import * as pdfjs from 'pdfjs-dist';
+import 'react-pdf/dist/Page/TextLayer.css';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
-export function Resume() {
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import useWindowScale from '@/hooks/useWindowScale';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+	'pdfjs-dist/build/pdf.worker.min.js',
+	import.meta.url,
+).toString();
+
+export default function Resume() {
 	const [isOpen, setIsOpen] = useState(false);
-	const canvasRef = useRef(null);
-
-	const handlePdfConversion = async () => {
-		pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-		const pdf = await pdfjs.getDocument('/Karol_Olechno_resume.pdf').promise;
-		const page = await pdf.getPage(1);
-		const viewport = page.getViewport({ scale: 1.5 });
-		const canvas = canvasRef.current;
-
-		if (canvas) {
-			const context = canvas.getContext('2d');
-			canvas.height = viewport.height;
-			canvas.width = viewport.width;
-			page.render({
-				canvasContext: context,
-				viewport,
-			});
-		}
-	};
-
-	const handleOpen = () => {
-		if (!isOpen) {
-			setIsOpen(true);
-		} else {
-			setIsOpen(false);
-		}
-	};
-
-	useEffect(() => {
-		handlePdfConversion();
-	}, [isOpen]);
+	const scale = useWindowScale();
 
 	return (
 		<div className="container flex flex-col items-center">
@@ -52,12 +31,18 @@ export function Resume() {
 				Click&nbsp;
 				<button
 					className="py-2 text-blue-500 underline hover:text-black"
-					onClick={handleOpen}>
+					onClick={() => setIsOpen(!isOpen)}>
 					here
 				</button>
 				&nbsp;to view my resume!
 			</div>
-			{isOpen && <canvas className="shadow-2xl" ref={canvasRef} />}
+			{isOpen && (
+				<>
+					<Document className="shadow-lg" file="/Karol_Olechno_resume.pdf">
+						<Page pageNumber={1} scale={scale} />
+					</Document>
+				</>
+			)}
 		</div>
 	);
 }
