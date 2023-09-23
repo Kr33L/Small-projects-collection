@@ -2,21 +2,28 @@
 
 import { useState, useEffect } from 'react';
 
-export default function useWindowScale(baseWidth = 750) {
-	const [scale, setScale] = useState(null);
+const breakpoints = [375, 768, 1024];
+
+export default function useWindowScale() {
+	const [scale, setScale] = useState(1);
 
 	useEffect(() => {
-		if (typeof window === 'undefined') return 1;
-
-		setScale(window.innerWidth / baseWidth);
-
-		const handleResize = () => {
-			setScale(window.innerWidth / baseWidth);
+		const windowChecks = {
+			itExists: typeof window !== 'undefined',
+			isMobile: window.innerWidth <= breakpoints[2],
 		};
 
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, [baseWidth]);
+		const handleResize = () => {
+			if (windowChecks.isMobile) return setScale(() => window.innerWidth / breakpoints[0]);
+			return setScale(() => window.innerWidth / breakpoints[1]);
+		};
+
+		if (windowChecks.itExists) {
+			window.addEventListener('resize', handleResize);
+			handleResize();
+			return () => window.removeEventListener('resize', handleResize);
+		}
+	}, []);
 
 	return scale;
 }
