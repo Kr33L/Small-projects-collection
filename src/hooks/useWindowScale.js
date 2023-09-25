@@ -8,17 +8,18 @@ export default function useWindowScale() {
 	const [scale, setScale] = useState(1);
 
 	useEffect(() => {
-		const windowChecks = {
-			itExists: typeof window !== 'undefined',
-			isMobile: window.innerWidth <= breakpoints[2],
-		};
+		const windowExists = typeof window !== 'undefined';
+		const windowIsMobile = window.innerWidth <= breakpoints[2];
 
 		const handleResize = () => {
-			if (windowChecks.isMobile) return setScale(() => window.innerWidth / breakpoints[0]);
-			return setScale(() => window.innerWidth / breakpoints[1]);
+			if (windowIsMobile) {
+				setScale(() => window.innerWidth / breakpoints[0]);
+			} else {
+				setScale(() => window.innerWidth / breakpoints[1]);
+			}
 		};
 
-		if (windowChecks.itExists) {
+		if (windowExists) {
 			window.addEventListener('resize', handleResize);
 			handleResize();
 			return () => window.removeEventListener('resize', handleResize);
