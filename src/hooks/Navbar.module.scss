@@ -1,0 +1,11 @@
+@use '@/styles/variables.scss' as v;
+
+.nav {
+	box-shadow: 0 0 0 1px black;
+	border-radius: v.$radius-full;
+	padding: 10px;
+}
+
+.activeLink {
+	border: 10px solid black;
+}
