@@ -18,8 +18,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<ThemeProvider attribute="class">
-				<body>
+			<body>
+				<ThemeProvider attribute="class">
 					<Wrapper
 						className={clsx(
 							font.className,
@@ -33,8 +33,8 @@ export default function RootLayout({ children }) {
 						</Wrapper>
 						<Wrapper>{children}</Wrapper>
 					</Wrapper>
-				</body>
-			</ThemeProvider>
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }
