@@ -4,5 +4,6 @@
 	"singleQuote": true,
 	"bracketSameLine": true,
 	"tabWidth": 2,
-	"proseWrap": "preserve"
+	"printWidth": 80,
+	"trailingComma": "all"
 }

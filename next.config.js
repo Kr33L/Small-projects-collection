@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -6,6 +8,7 @@ const nextConfig = {
 			test: /\.node/,
 			use: 'raw-loader',
 		});
+
 		config.externals = [...config.externals, 'canvas', 'jsdom'];
 		return config;
 	},
