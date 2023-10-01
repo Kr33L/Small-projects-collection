@@ -6,11 +6,15 @@ export default function useWindowScale() {
 	const [scale, setScale] = useState(2);
 
 	useEffect(() => {
-		const divideWidth = (width) => {
-			return (window.innerWidth / width).toFixed(2);
+		const divideWidth = (width: number): number => {
+			return Number((document.body.clientWidth / width).toFixed(2));
 		};
 		const handleResize = () => {
-			setScale(() => (window.innerWidth >= 1024 ? divideWidth(950) : divideWidth(700)));
+			setScale(() =>
+				document.body.clientWidth >= 1024
+					? divideWidth(1500)
+					: divideWidth(700),
+			);
 		};
 
 		if (typeof window !== 'undefined') {
@@ -20,12 +24,6 @@ export default function useWindowScale() {
 			return () => window.removeEventListener('resize', handleResize);
 		}
 	}, []);
-
-	// useEffect(() => {
-	// 	console.log(`Window size: ${window.innerWidth} x ${window.innerHeight}`);
-	// }, [scale]);
-
-	// console.log(`Scale: ${scale}`);
 
 	return scale;
 }
