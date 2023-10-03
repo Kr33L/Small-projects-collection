@@ -1,31 +1,39 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { useEffect } from 'react';
+import useMounted from '@/hooks/useMounted';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import Wrapper from './Wrapper';
+import clsx from 'clsx';
 
-export default function ThemeToggle() {
-	const [mounted, setMounted] = useState(false);
+export default function ThemeToggle({ className }: { className?: string }) {
+	const mounted = useMounted();
 	const { theme, setTheme } = useTheme();
 
 	useEffect(() => {
-		setMounted(true);
 		setTheme(theme);
-	}, [theme]);
+	}, [setTheme, theme]);
 
 	if (!mounted) return null;
 	return (
-		<>
-			<span>The current theme is: {theme}</span>
+		<Wrapper className={className}>
 			{['light', 'dark'].map((mode) => (
 				<button
 					key={mode}
 					onClick={() => setTheme(mode)}
-					className="hover:underline">
-					<span>{mode} mode</span>
-					{mode === theme && <CheckIcon className="inline" />}
+					className={clsx(
+						theme == mode && 'bg-secondary drop-shadow-2xl',
+						theme != mode && 'bg-background',
+						'border-b border-accent p-1 duration-0 after:absolute after:bottom-0 after:left-0 after:right-0 after:bg-accent hover:shadow-lg hover:after:h-px active:shadow-inner sm:relative',
+					)}>
+					{mode == 'light' ? (
+						<SunIcon key={mode + 'icon'} className="w-full" />
+					) : (
+						<MoonIcon key={mode + 'icon'} className="w-full" />
+					)}
 				</button>
 			))}
-		</>
+		</Wrapper>
 	);
 }
