@@ -1,5 +1,9 @@
-import Paragraph from '@/components/ui/Paragraph';
+export const metadata = {
+	title: 'Karol Olechno | Home',
+	description:
+		"Karol Olechno's personal website showcasing his projects, skills and more.",
+};
 
 export default function HomePage() {
-	return <Paragraph>This is the home page!</Paragraph>;
+	return <p>This is the home page!</p>;
 }
