@@ -1,24 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
 	:root {
-		--text: #0f100f;
-		--background: #f7f8f7;
-		--primary: #53fb50;
-		--secondary: #eff0f0;
-		--accent: #858e8e;
+		--text: #000000;
+		--background: #ffffff;
+		--primary: #45e85b;
+		--secondary: #daddda;
+		--accent: #7a7179;
 	}
 	.dark {
-		--text: #eff0ef;
-		--background: #070807;
-		--primary: #06af04;
-		--secondary: #0f1010;
-		--accent: #717a7a;
+		--text: #ffffff;
+		--background: #000000;
+		--primary: #17ba2d;
+		--secondary: #222522;
+		--accent: #8e858d;
 	}
 }
 
 .react-pdf__Page__canvas {
-	@apply border;
+	@apply border border-accent;
 }
