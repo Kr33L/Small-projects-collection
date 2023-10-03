@@ -6,7 +6,7 @@ export default function Wrapper(
 	key?: Key,
 ) {
 	return (
-		<div className={clsx(className, 'p-2 shadow-inner')} key={key}>
+		<div className={clsx(className, 'border-accent p-2')} key={key}>
 			{children}
 		</div>
 	);
