@@ -29,5 +29,24 @@
 		"prettier-plugin-tailwindcss": "^0.5.4",
 		"raw-loader": "^4.0.2",
 		"typescript": "5.2.2"
+	},
+	"eslintConfig": {
+		"extends": [
+			"next",
+			"next/core-web-vitals",
+			"plugin:prettier/recommended"
+		]
+	},
+	"prettier": {
+		"plugins": [
+			"prettier-plugin-tailwindcss"
+		],
+		"useTabs": true,
+		"singleQuote": true,
+		"bracketSameLine": true,
+		"singleAttributePerLine": false,
+		"tabWidth": 2,
+		"printWidth": 120,
+		"trailingComma": "all"
 	}
 }
