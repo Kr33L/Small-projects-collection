@@ -11,8 +11,7 @@ const font = M_PLUS_1_Code({ subsets: ['latin'] });
 
 export const metadata = {
 	title: 'Karol Olechno ',
-	description:
-		"Karol Olechno's personal website showcasing his projects, skills and more.",
+	description: "Karol Olechno's personal website showcasing his projects, skills and more.",
 };
 
 export default function RootLayout({ children }) {
@@ -21,10 +20,10 @@ export default function RootLayout({ children }) {
 			<body
 				className={clsx(
 					font.className,
-					'h-screen border border-accent bg-background text-xl text-text transition-all duration-100',
+					'h-fit min-h-screen border border-accent bg-background text-lg text-text transition-all duration-100',
 				)}>
 				<ThemeProvider attribute="class">
-					<Wrapper className="mx-auto my-auto h-full max-w-screen-lg border-x">
+					<Wrapper className="m-auto min-h-screen max-w-screen-lg border-x">
 						<ThemeToggle className="fixed top-0 z-50 flex flex-col sm:-translate-x-12" />
 						<Navbar />
 						{children}
