@@ -21,6 +21,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
 			{['light', 'system', 'dark'].map((mode) => (
 				<button
 					key={mode}
+					title={{ light: 'Light theme', system: 'System theme', dark: 'Dark theme' }[mode]}
 					onClick={() => setTheme(mode)}
 					className={clsx(
 						theme == mode ? 'bg-secondary drop-shadow-2xl' : 'bg-background',
