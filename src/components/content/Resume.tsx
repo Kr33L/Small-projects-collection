@@ -9,7 +9,7 @@ import useWindowScale from '@/hooks/useWindowScale';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 export default function Resume() {
-	const scale = useWindowScale();
+	const scale = useWindowScale(1024, 1.6);
 
 	return (
 		<Document className="flex justify-center" file="/Karol_Olechno_resume.pdf">

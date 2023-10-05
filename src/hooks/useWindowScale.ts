@@ -2,19 +2,14 @@
 
 import { useState, useEffect } from 'react';
 
-export default function useWindowScale() {
-	const [scale, setScale] = useState(2);
+export default function useWindowScale(parentWidth: number, desiredRatio: number) {
+	const [scale, setScale] = useState(1.6);
 
 	useEffect(() => {
-		const divideWidth = (width: number): number => {
-			return Number((document.body.clientWidth / width).toFixed(2));
-		};
 		const handleResize = () => {
-			setScale(() =>
-				document.body.clientWidth >= 1024
-					? divideWidth(1500)
-					: divideWidth(700),
-			);
+			const width = window.innerWidth;
+			const ratio = (width <= parentWidth && (width / parentWidth) * desiredRatio) || desiredRatio;
+			setScale(ratio);
 		};
 
 		if (typeof window !== 'undefined') {
@@ -23,7 +18,7 @@ export default function useWindowScale() {
 
 			return () => window.removeEventListener('resize', handleResize);
 		}
-	}, []);
+	}, [desiredRatio, parentWidth]);
 
 	return scale;
 }
