@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import ThemeToggle from './ThemeToggle';
 import Wrapper from './Wrapper';
@@ -18,7 +18,7 @@ export default function Navbar() {
 
 	// Filter out the links not needed in production
 	if (process.env.NODE_ENV === 'production') {
-		links.splice(0, 3); // Remove the first three links
+		links.splice(1, 3); // Remove the first three links
 	}
 
 	return (
