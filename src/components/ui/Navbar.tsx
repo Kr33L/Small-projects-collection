@@ -18,7 +18,7 @@ export default function Navbar() {
 
 	// Filter out the links not needed in production
 	if (process.env.NODE_ENV === 'production') {
-		links.splice(1, 3); // Remove the first three links
+		links.splice(1, 2); // Remove the first three links
 	}
 
 	return (
