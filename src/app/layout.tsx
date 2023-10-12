@@ -3,7 +3,6 @@ import { M_PLUS_1_Code } from 'next/font/google';
 import { clsx } from 'clsx';
 
 import ThemeProvider from '@/lib/ThemeProvider';
-import Wrapper from '@/components/ui/Wrapper';
 import Navbar from '@/components/ui/Navbar';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
@@ -16,18 +15,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" suppressHydrationWarning className="h-screen">
+		<html lang="en" suppressHydrationWarning>
 			<body
-				className={clsx(
-					font.className,
-					'h-fit min-h-screen border border-accent bg-background text-lg text-text transition-all duration-100',
-				)}>
+				className={clsx(font.className, 'text-md min-h-screen bg-background text-text transition-all duration-300')}>
 				<ThemeProvider attribute="class">
-					<Wrapper className="m-auto min-h-screen max-w-screen-lg border-x">
-						<ThemeToggle className="fixed top-0 z-50 flex flex-col sm:-translate-x-12" />
-						<Navbar />
+					<div className="mx-auto min-h-screen max-w-screen-lg border-x border-accent">
+						<ThemeToggle className="fixed top-0 z-50 flex flex-col sm:-translate-x-8 sm:translate-y-2" />
+						<Navbar className="fixed bottom-0 left-1/2 flex w-11/12 -translate-x-1/2 transform items-center justify-between sm:relative sm:w-4/5" />
 						{children}
-					</Wrapper>
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

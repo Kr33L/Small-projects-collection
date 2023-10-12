@@ -1,4 +1,3 @@
-import Wrapper from '@/components/ui/Wrapper';
 import Resume from '@/components/content/Resume';
 
 export const metadata = {
@@ -9,17 +8,14 @@ export const metadata = {
 export default function ResumePage() {
 	return (
 		<>
-			<Wrapper>
+			<div>
 				<p className="text-center">
 					Download&nbsp;
 					<a href="/Karol_Olechno_resume.pdf" download="Karol_Olechno_resume">
-						<span className="text-accent underline hover:text-secondary">
-							here
-						</span>
-						!
+						<span className="text-accent underline hover:text-secondary">here</span>!
 					</a>
 				</p>
-			</Wrapper>
+			</div>
 			<Resume />
 		</>
 	);
