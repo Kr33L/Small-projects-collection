@@ -3,10 +3,13 @@
 import { useTheme } from 'next-themes';
 import { MoonIcon, DesktopIcon, SunIcon } from '@radix-ui/react-icons';
 import useMounted from '@/hooks/useMounted';
-import Wrapper from './Wrapper';
 import clsx from 'clsx';
 
-export default function ThemeToggle({ className }: { className?: string }) {
+type ThemeToggleParams = {
+	className?: string;
+};
+
+export default function ThemeToggle({ className }: ThemeToggleParams) {
 	const mounted = useMounted();
 	const { theme, setTheme } = useTheme();
 
@@ -17,7 +20,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
 	];
 
 	return mounted ? (
-		<Wrapper className={className}>
+		<div className={className}>
 			{themes.map(({ mode, name, icon }) => (
 				<button
 					key={mode}
@@ -30,6 +33,6 @@ export default function ThemeToggle({ className }: { className?: string }) {
 					{icon}
 				</button>
 			))}
-		</Wrapper>
+		</div>
 	) : null;
 }

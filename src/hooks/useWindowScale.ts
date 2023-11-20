@@ -1,9 +1,16 @@
 'use client';
 
+//REDUNDANT - USED FOR DISPLAYING PDF IN CANVAS ON PAGE
+
 import { useState, useEffect } from 'react';
 
-export default function useWindowScale(parentWidth: number, desiredRatio: number) {
-	const [scale, setScale] = useState(1.6);
+type WindowScaleParams = {
+	parentWidth: number;
+	desiredRatio?: number;
+};
+
+export default function useWindowScale({ parentWidth, desiredRatio }: WindowScaleParams) {
+	const [scale, setScale] = useState(desiredRatio || 1.6);
 
 	useEffect(() => {
 		const handleResize = () => {
