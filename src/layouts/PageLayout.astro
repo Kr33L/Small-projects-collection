@@ -14,10 +14,15 @@ import FontAwesome from "./FontAwesome.astro";
 import ThemeScript from "./ThemeScript.astro";
 import Favicon from "./Favicon.astro";
 import Header from "../components/Header.astro";
+import { ViewTransitions, fade } from "astro:transitions";
 ---
 
 <!DOCTYPE html>
-<html class="theme-newspaper" lang="en">
+<html
+	transition:animate={fade({ duration: "0.3s" })}
+	class="theme-newspaper"
+	lang="en"
+>
 	<head>
 		<!-- Global Metadata -->
 		<meta charset="utf-8" />
@@ -26,6 +31,7 @@ import Header from "../components/Header.astro";
 		<Favicon />
 		<slot name="meta" />
 		<GoogleFont />
+		<ViewTransitions />
 		<ThemeScript />
 		<FontAwesome />
 	</head>

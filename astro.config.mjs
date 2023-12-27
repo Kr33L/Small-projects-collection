@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import sentry from "@sentry/astro";
 
 /* 
   We are doing some URL mumbo jumbo here to tell Astro what the URL of your website will be.
@@ -12,7 +13,6 @@ import tailwind from "@astrojs/tailwind";
   If you don't know your website URL yet, don't worry about this
   and leave it empty or use localhost URL. It won't break anything.
 */
-
 const SERVER_PORT = 3000;
 // the url to access your blog during local development
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
@@ -24,16 +24,28 @@ const isBuild = SCRIPT.includes("astro build");
 let BASE_URL = LOCALHOST_URL;
 // When you're building your site in local or in CI, you could just set your URL manually
 if (isBuild) {
-  BASE_URL = LIVE_URL;
+	BASE_URL = LIVE_URL;
 }
 
+// https://astro.build/config
 export default defineConfig({
-  server: { port: SERVER_PORT },
-  site: BASE_URL,
-  integrations: [
-    sitemap(),
-    tailwind({
-      config: { applyBaseStyles: false },
-    }),
-  ],
+	server: {
+		port: SERVER_PORT,
+	},
+	site: BASE_URL,
+	integrations: [
+		sitemap(),
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		sentry({
+			dsn: "https://62bff1d591c5d29f3d78a98a02bdf7cf@o4506468164370432.ingest.sentry.io/4506468177281024",
+			sourceMapsUploadOptions: {
+				project: "javascript-astro",
+				authToken: process.env.SENTRY_AUTH_TOKEN,
+			},
+		}),
+	],
 });
