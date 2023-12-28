@@ -9,6 +9,7 @@
 		type="button"
 		tabindex="0"
 		aria-checked="false"
+		data-mode=""
 		data-headlessui-state=""
 		><span class="sr-only">Toggle dark mode</span><span
 			id="mode-circle"
@@ -31,11 +32,13 @@
 		}
 
 		if (mode === "dark") {
+			document.documentElement.classList.remove("light");
 			document.documentElement.classList.add("dark");
 			// @ts-ignore
 			themeColorMetaTag.content = "#262626";
 		} else {
 			document.documentElement.classList.remove("dark");
+			document.documentElement.classList.add("light");
 			// @ts-ignore
 			themeColorMetaTag.content = "#ffffff";
 		}
@@ -74,6 +77,7 @@
 			toggle?.addEventListener("click", () => {
 				if (currentMode === "dark") {
 					const modeToSwitch = "light";
+					toggle.dataset.mode = "light";
 					iconElem.classList.remove("dark");
 					iconElem.classList.add("light");
 					updateHTMLTheme(modeToSwitch);
@@ -81,6 +85,7 @@
 					currentMode = modeToSwitch;
 				} else {
 					const modeToSwitch = "dark";
+					toggle.dataset.mode = "dark";
 					iconElem.classList.remove("light");
 					iconElem.classList.add("dark");
 					updateHTMLTheme(modeToSwitch);
@@ -97,6 +102,24 @@
 	}
 
 	customElements.define("mode-toggle", ModeToggle);
+	document.addEventListener("astro:after-swap", () => {
+		const toggle = document.querySelector("[data-mode]");
+		const iconElem = toggle?.querySelector("#mode-circle");
+		// @ts-ignore
+		if (toggle.dataset.mode === "dark") {
+			const modeToSwitch = "dark";
+			iconElem.classList.remove("light");
+			iconElem.classList.add("dark");
+			updateHTMLTheme(modeToSwitch);
+			updateStorageTheme(modeToSwitch);
+		} else {
+			const modeToSwitch = "light";
+			iconElem.classList.remove("dark");
+			iconElem.classList.add("light");
+			updateHTMLTheme(modeToSwitch);
+			updateStorageTheme(modeToSwitch);
+		}
+	});
 </script>
 
 <style>

@@ -20,6 +20,7 @@ import { ViewTransitions, fade } from "astro:transitions";
 <!DOCTYPE html>
 <html
 	transition:animate={fade({ duration: "0.3s" })}
+	transition:persist
 	class="theme-newspaper"
 	lang="en"
 >
@@ -32,8 +33,8 @@ import { ViewTransitions, fade } from "astro:transitions";
 		<slot name="meta" />
 		<GoogleFont />
 		<ViewTransitions />
-		<ThemeScript />
 		<FontAwesome />
+		<ThemeScript />
 	</head>
 
 	<body class="border-x max-w-3xl mx-auto min-h-screen px-6 sm:px-8">

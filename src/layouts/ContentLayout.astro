@@ -12,6 +12,7 @@ import FontAwesome from "./FontAwesome.astro";
 import ThemeScript from "./ThemeScript.astro";
 import Favicon from "./Favicon.astro";
 import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
 	title: string;
@@ -27,7 +28,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 ---
 
 <!DOCTYPE html>
-<html class="theme-newspaper" lang="en">
+<html class="theme-newspaper" transition:animate="slide" lang="en">
 	<head>
 		<!-- Global Metadata -->
 		<meta charset="utf-8" />
@@ -37,6 +38,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 		<slot name="meta" />
 		<GoogleFont />
 		<ThemeScript />
+		<ViewTransitions />
 		<FontAwesome />
 	</head>
 
