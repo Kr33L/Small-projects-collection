@@ -1,29 +1,49 @@
 ---
 ---
 
-<script is:inline>
-	// figure out user's preferred theme and set it as html class for tailwind before paint
-	function changeTheme() {
+<script>
+	// import { darkMode, updateHtmlTheme, updateModeCircle } from "../lib/store.ts";
+
+	function updateTheme() {
 		if (typeof window === "undefined") return;
-		const modeCircle = document.querySelector("#mode-circle");
-		const storedTheme = sessionStorage.getItem("theme");
-		const isSystemColorSchemeDark = window.matchMedia(
+		const storedSession = Boolean(sessionStorage?.getItem("darkMode"));
+		const rootHtml = document.documentElement.classList;
+		const prefersDarkTheme = window.matchMedia(
 			"(prefers-color-scheme: dark)"
 		).matches;
 
-		if (storedTheme === "dark" || isSystemColorSchemeDark) {
-			document.head.children.namedItem("theme-color").content = "#262626";
-			modeCircle.classList.remove("light");
-			modeCircle.classList.add("dark");
-		} else {
-			document.head.children.namedItem("theme-color").content = "#ffffff";
-			document.documentElement.classList.remove("dark");
-			modeCircle.classList.remove("dark");
-			modeCircle.classList.add("light");
-		}
+		if (storedSession) {
+			!dark;
+		} else darkMode.set(prefersDarkTheme);
+
+		updateHtmlTheme();
+		updateModeCircle();
 	}
 
-	changeTheme;
+	updateTheme;
 
-	document.addEventListener("astro:after-swap", changeTheme);
+	document.addEventListener("astro:after-swap", () => {
+		updateHtmlTheme;
+		updateModeCircle;
+	});
+	export function updateModeCircle() {
+		const toggleButtonCircle = document.querySelector(
+			"#mode-circle"
+		) as HTMLElement;
+
+		toggleButtonCircle.classList.toggle(darkMode.get() ? "dark" : "light");
+	}
+
+	export function updateHtmlTheme() {
+		const themeColorMetaTag = document.head.querySelector(
+			'meta[name="theme-color"]'
+		) as HTMLMetaElement;
+
+		if (themeColorMetaTag) {
+			document.documentElement.classList.toggle("dark", darkMode.get());
+			themeColorMetaTag.content = darkMode.get()
+				? darkColor.get()
+				: lightColor.get();
+		}
+	}
 </script>
