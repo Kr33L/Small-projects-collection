@@ -1,7 +1,7 @@
 ---
 ---
 
-<mode-toggle transition:persist class="flex">
+<mode-toggle class="flex">
 	<button
 		class="justify-self-end bg-black dark:bg-white ml-4 inline-flex h-6 w-11 items-center rounded-full"
 		id="mode-toggle"
@@ -9,7 +9,6 @@
 		type="button"
 		tabindex="0"
 		aria-checked="false"
-		data-mode=""
 		data-headlessui-state=""
 		><span class="sr-only">Toggle dark mode</span><span
 			id="mode-circle"
@@ -22,104 +21,71 @@
 </mode-toggle>
 
 <script>
-	function updateHTMLTheme(mode: "light" | "dark") {
-		const themeColorMetaTag = document.head.querySelector(
-			'meta[name="theme-color"]'
-		);
+	type State = {
+		class: string;
+		content: string;
+	};
 
-		if (!themeColorMetaTag) {
-			return;
-		}
+	const meta = document.querySelector('meta[name="theme-color"]')!;
+	const rootHtml = document.documentElement;
+	const storageKey = "current_theme";
 
-		if (mode === "dark") {
-			document.documentElement.classList.remove("light");
-			document.documentElement.classList.add("dark");
-			// @ts-ignore
-			themeColorMetaTag.content = "#262626";
-		} else {
-			document.documentElement.classList.remove("dark");
-			document.documentElement.classList.add("light");
-			// @ts-ignore
-			themeColorMetaTag.content = "#ffffff";
-		}
+	const theme = {
+		currentState: "",
+		dark: {
+			class: "dark",
+			content: "#262626",
+		},
+		light: {
+			class: "light",
+			content: "#FFFFFF",
+		},
+	};
+
+	function toggleTheme(state: State) {
+		const modeCircle = document.querySelector("#mode-circle")!;
+
+		rootHtml.classList.remove(theme.currentState);
+		modeCircle.classList.remove(theme.currentState, "invisible");
+		rootHtml.classList.add(state.class);
+		modeCircle.classList.add(state.class, "duration-300");
+		meta.setAttribute("content", state.content);
+
+		theme.currentState = state.class;
+		sessionStorage.setItem(storageKey, state.class);
 	}
 
-	function updateStorageTheme(mode: "light" | "dark") {
-		if (mode === "dark") {
-			sessionStorage.setItem("theme", "dark");
-		} else {
-			sessionStorage.setItem("theme", "light");
-		}
+	function onPageTransition() {
+		const activeTheme = theme[theme.currentState === "dark" ? "dark" : "light"];
+		activeTheme && toggleTheme(activeTheme);
+	}
+
+	function onModeToggleClick() {
+		const newTheme = theme[theme.currentState !== "dark" ? "dark" : "light"];
+		newTheme && toggleTheme(newTheme);
+	}
+
+	function initialState() {
+		const likesDark = window.matchMedia("(prefers-color-scheme: dark)");
+		const session = sessionStorage.getItem(storageKey);
+
+		return session || (likesDark.matches ? "dark" : "light");
 	}
 
 	class ModeToggle extends HTMLElement {
+		private buttonElement = this.querySelector("button")!;
+
 		constructor() {
 			super();
-			let currentMode: "light" | "dark" =
-				document.documentElement.classList.contains("dark") ? "dark" : "light";
-			const toggle = this.querySelector("button");
-			const iconElem = toggle?.querySelector("#mode-circle");
-
-			if (!iconElem) {
-				return;
-			}
-			// set the toggle mode based on the html classname set in ThemeScript.astro
-			if (currentMode === "dark") {
-				iconElem.classList.remove("light");
-				iconElem.classList.add("dark");
-			}
-
-			// we load the toggle invisible to prevent flash
-			// remove visibility class after setting initial dark/light class
-			iconElem.classList.remove("invisible");
-
-			// Each time the button is clicked, update the count.
-			toggle?.addEventListener("click", () => {
-				if (currentMode === "dark") {
-					const modeToSwitch = "light";
-					toggle.dataset.mode = "light";
-					iconElem.classList.remove("dark");
-					iconElem.classList.add("light");
-					updateHTMLTheme(modeToSwitch);
-					updateStorageTheme(modeToSwitch);
-					currentMode = modeToSwitch;
-				} else {
-					const modeToSwitch = "dark";
-					toggle.dataset.mode = "dark";
-					iconElem.classList.remove("light");
-					iconElem.classList.add("dark");
-					updateHTMLTheme(modeToSwitch);
-					updateStorageTheme(modeToSwitch);
-					currentMode = modeToSwitch;
-				}
-
-				// prevent slide animation on page load for dark mode
-				if (!iconElem.classList.contains("duration-300")) {
-					iconElem.classList.add("duration-300");
-				}
-			});
+			this.buttonElement.addEventListener("click", onModeToggleClick);
 		}
 	}
 
 	customElements.define("mode-toggle", ModeToggle);
-	document.addEventListener("astro:after-swap", () => {
-		const toggle = document.querySelector("[data-mode]");
-		const iconElem = toggle?.querySelector("#mode-circle");
-		// @ts-ignore
-		if (toggle.dataset.mode === "dark") {
-			const modeToSwitch = "dark";
-			iconElem.classList.remove("light");
-			iconElem.classList.add("dark");
-			updateHTMLTheme(modeToSwitch);
-			updateStorageTheme(modeToSwitch);
-		} else {
-			const modeToSwitch = "light";
-			iconElem.classList.remove("dark");
-			iconElem.classList.add("light");
-			updateHTMLTheme(modeToSwitch);
-			updateStorageTheme(modeToSwitch);
-		}
-	});
+
+	theme.currentState = initialState();
+	onPageTransition();
+	document.addEventListener("astro:after-swap", onPageTransition);
 </script>
 
 <style>

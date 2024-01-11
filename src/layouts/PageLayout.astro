@@ -11,7 +11,6 @@ import "../styles/global.css";
 
 import GoogleFont from "./GoogleFont.astro";
 import FontAwesome from "./FontAwesome.astro";
-import ThemeScript from "./ThemeScript.astro";
 import Favicon from "./Favicon.astro";
 import Header from "../components/Header.astro";
 import { ViewTransitions, fade } from "astro:transitions";
@@ -19,8 +18,7 @@ import { ViewTransitions, fade } from "astro:transitions";
 
 <!DOCTYPE html>
 <html
-	transition:animate={fade({ duration: "0.3s" })}
-	transition:persist
+	transition:animate={fade({ duration: "0.4s" })}
 	class="theme-newspaper"
 	lang="en"
 >
@@ -34,7 +32,6 @@ import { ViewTransitions, fade } from "astro:transitions";
 		<GoogleFont />
 		<ViewTransitions />
 		<FontAwesome />
-		<ThemeScript />
 	</head>
 
 	<body class="border-x max-w-3xl mx-auto min-h-screen px-6 sm:px-8">
