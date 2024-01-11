@@ -9,7 +9,6 @@ import "../styles/global.css";
 
 import GoogleFont from "./GoogleFont.astro";
 import FontAwesome from "./FontAwesome.astro";
-import ThemeScript from "./ThemeScript.astro";
 import Favicon from "./Favicon.astro";
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
@@ -37,7 +36,6 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 		<Favicon />
 		<slot name="meta" />
 		<GoogleFont />
-		<ThemeScript />
 		<ViewTransitions />
 		<FontAwesome />
 	</head>
