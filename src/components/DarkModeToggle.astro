@@ -1,7 +1,7 @@
 ---
 ---
 
-<mode-toggle transition:persist class="flex">
+<mode-toggle class="flex">
 	<button
 		class="justify-self-end bg-black dark:bg-white ml-4 inline-flex h-6 w-11 items-center rounded-full"
 		id="mode-toggle"
@@ -21,46 +21,71 @@
 </mode-toggle>
 
 <script>
-	import { updateHtmlTheme, updateModeCircle, darkMode } from "../lib/store";
+	type State = {
+		class: string;
+		content: string;
+	};
+
+	const meta = document.querySelector('meta[name="theme-color"]')!;
+	const rootHtml = document.documentElement;
+	const storageKey = "current_theme";
+
+	const theme = {
+		currentState: "",
+		dark: {
+			class: "dark",
+			content: "#262626",
+		},
+		light: {
+			class: "light",
+			content: "#FFFFFF",
+		},
+	};
+
+	function toggleTheme(state: State) {
+		const modeCircle = document.querySelector("#mode-circle")!;
+
+		rootHtml.classList.remove(theme.currentState);
+		modeCircle.classList.remove(theme.currentState, "invisible");
+		rootHtml.classList.add(state.class);
+		modeCircle.classList.add(state.class, "duration-300");
+		meta.setAttribute("content", state.content);
+
+		theme.currentState = state.class;
+		sessionStorage.setItem(storageKey, state.class);
+	}
+
+	function onPageTransition() {
+		const activeTheme = theme[theme.currentState === "dark" ? "dark" : "light"];
+		activeTheme && toggleTheme(activeTheme);
+	}
+
+	function onModeToggleClick() {
+		const newTheme = theme[theme.currentState !== "dark" ? "dark" : "light"];
+		newTheme && toggleTheme(newTheme);
+	}
+
+	function initialState() {
+		const likesDark = window.matchMedia("(prefers-color-scheme: dark)");
+		const session = sessionStorage.getItem(storageKey);
+
+		return session || (likesDark.matches ? "dark" : "light");
+	}
 
 	class ModeToggle extends HTMLElement {
-		private toggleButton = this.querySelector("button") as HTMLElement;
-		private iconElement = this.toggleButton.querySelector(
-			"#mode-circle"
-		) as HTMLElement;
-
-		private toggleVisibility(element: HTMLElement) {
-			if (!element.classList.contains("duration-300")) {
-				element.classList.add("duration-300");
-			}
-		}
-
-		private initializeButton(element: HTMLElement) {
-			if (element) {
-				element.classList.toggle("light", darkMode.get());
-				element.classList.toggle("dark", !darkMode.get());
-				if (element.classList.contains("invisible")) {
-					element.classList.remove("invisible");
-				}
-			}
-		}
+		private buttonElement = this.querySelector("button")!;
 
 		constructor() {
 			super();
-			let currentMode = darkMode.get();
-
-			this.initializeButton(this.iconElement);
-			this.toggleButton.addEventListener("click", () => {
-				darkMode.set(!currentMode);
-				sessionStorage.setItem("darkMode", String(currentMode));
-				updateHtmlTheme;
-				updateModeCircle;
-				this.toggleVisibility(this.iconElement);
-			});
+			this.buttonElement.addEventListener("click", onModeToggleClick);
 		}
 	}
 
 	customElements.define("mode-toggle", ModeToggle);
+
+	theme.currentState = initialState();
+	onPageTransition();
+	document.addEventListener("astro:after-swap", onPageTransition);
 </script>
 
 <style>
