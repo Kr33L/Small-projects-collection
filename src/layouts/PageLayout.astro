@@ -14,7 +14,7 @@ import FontAwesome from "./FontAwesome.astro";
 import Favicon from "./Favicon.astro";
 import Header from "../components/Header.astro";
 import { ViewTransitions, fade } from "astro:transitions";
-import BackgroundAccentCorners from "../components/BackgroundAccentCorners.astro";
+import CornerBorder from "@/components/CornerBorder.astro";
 ---
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ import BackgroundAccentCorners from "../components/BackgroundAccentCorners.astro
 	</head>
 
 	<body class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8 relative">
-		<BackgroundAccentCorners />
+		<CornerBorder />
 		<Header />
 		<main id="main">
 			<slot name="main" />
