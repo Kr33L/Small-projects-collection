@@ -3,10 +3,10 @@ import HeaderLink from "./HeaderLink.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 
 const links = [
-	["Home", "/"],
-	["Blog", "/blog"],
-	["Projects", "/projects"],
-	["Guestbook", "/guestbook"],
+	{ title: "Home", url: "/" },
+	{ title: "Blog", url: "/blog" },
+	{ title: "Projects", url: "/projects" },
+	{ title: "Guestbook", url: "/guestbook" },
 ];
 ---
 
@@ -21,10 +21,10 @@ const links = [
 		<section class="text-text-bold">
 			<ul class="unset flex gap-4 [&>li]:p-0">
 				{
-					links.map(([title, url]) => {
+					links.map((link) => {
 						return (
 							<li>
-								<HeaderLink href={url}>{title}</HeaderLink>
+								<HeaderLink href={link.url}>{link.title}</HeaderLink>
 							</li>
 						);
 					})
