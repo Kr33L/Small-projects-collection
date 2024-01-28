@@ -13,6 +13,7 @@ import sentry from "@sentry/astro";
   If you don't know your website URL yet, don't worry about this
   and leave it empty or use localhost URL. It won't break anything.
 */
+import vercel from "@astrojs/vercel/serverless";
 const SERVER_PORT = 3000;
 // the url to access your blog during local development
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
@@ -29,6 +30,7 @@ if (isBuild) {
 
 // https://astro.build/config
 export default defineConfig({
+	output: "hybrid",
 	server: {
 		port: SERVER_PORT,
 	},
@@ -48,4 +50,6 @@ export default defineConfig({
 			},
 		}),
 	],
+	output: "server",
+	adapter: vercel(),
 });
